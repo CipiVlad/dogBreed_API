@@ -30,16 +30,11 @@ const BreedList = () => {
         console.log('works')
     }
 
-
-
-
-
-
     return (
         <>
             <h1>Welcome to the Dog API</h1>
             <article>
-                <p>Click on breed to show detail pictures or select one or multiple breeds to create a gallery!</p>
+                <p>Click on breed image to show detail pictures or select one or multiple breeds to create a gallery!</p>
             </article>
 
             {/* create a gallery from favorites chosen */}
@@ -51,7 +46,7 @@ const BreedList = () => {
                 Create Gallery
             </Button>
 
-
+            {/* map the list of all hounds */}
             {
                 nameList && nameList.map((breed, index) => (
                     <BreedItem
@@ -61,8 +56,6 @@ const BreedList = () => {
                     />
                 ))
             }
-
-
         </>
     )
 }

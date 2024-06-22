@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    padding: 50px;
+
+    /* 
+     #5e60ce 0%,
+            #5390d9 25%,
+            #4ea8de 50%,
+            #48bfe3 75%,
+            #56cfe1 100%);
+
+    */
+    background: linear-gradient(180deg, #5e60ce 0%, #5390d9 25%, #4ea8de 50%, #48bfe3 75%, #56cfe1 100%);
+    background-attachment: fixed;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin-bottom: 16px;
+}
