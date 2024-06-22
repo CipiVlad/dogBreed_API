@@ -21,8 +21,7 @@ const BreedDetail = () => {
         getHound();
     }, [])
 
-    console.log(images);
-
+    // console.log(images);
 
     return (
         <div>
