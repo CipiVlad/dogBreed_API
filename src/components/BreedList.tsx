@@ -40,7 +40,7 @@ const BreedList = () => {
     const handleCreateGallery = () => {
         navigate('/gallery', { state: favorites });
 
-        console.log("Favorites: ", favorites);
+        // console.log("Favorites: ", favorites);
     }
 
     const handleFavorites = (breed: string, isChecked: boolean) => {

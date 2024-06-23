@@ -17,6 +17,8 @@
 - [x] "create gallery" button only enabled if favorites are chosen 
 - [] add 404 page
 - [x] set link to DOG API
+- [x] share gallery with instagram tag #dog
+- [x] in gallery click on image to search in google lens for more images
 
 ## App Structure
 - route: "/"
