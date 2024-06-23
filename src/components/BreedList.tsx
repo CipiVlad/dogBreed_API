@@ -88,6 +88,7 @@ const BreedList = () => {
                 variant="contained"
                 color="success"
                 onClick={handleCreateGallery}
+                disabled={favorites.length === 0}
             >
                 Create Gallery
             </Button>
