@@ -3,13 +3,15 @@ import axios from 'axios';
 import { BASE_URL } from "../api/BaseURL";
 import BreedItem from "./BreedItem";
 import Button from '@mui/material/Button';
-
+import { Link } from "react-router-dom";
+//github icon
+import GitHubIcon from '@mui/icons-material/GitHub';
 const BreedList = () => {
     const [breedList, setBreedList] = useState([]);
     const getObjEntries = Object.entries(breedList);
     const nameList = getObjEntries.map(e => e[0]);
-    const [image, setImage] = useState([]);
-
+    const [image, setImage] = useState<string[]>([]);
+    const [favorites, setFavorites] = useState<string[]>([]);
 
     //fetch the list of all breeds by name
     const getBreedList = async () => {
@@ -25,13 +27,43 @@ const BreedList = () => {
         getBreedList();
     }, [])
 
-
     const handleCreateGallery = () => {
-        console.log('works')
+        console.log("Favorites: ", favorites);
     }
+
+    const handleFavorites = (breed: string, isChecked: boolean) => {
+        setFavorites(prevState => isChecked ? [...prevState, breed] : prevState.filter(e => e !== breed));
+    }
+
+    useEffect(() => {
+        console.log(favorites);
+    }, [favorites])
 
     return (
         <>
+            <header>
+                <nav>
+                    <p> Made with
+                        <span style={{ color: 'red' }}>
+                            &#10084;
+                        </span>
+                        by
+                        <br />
+                        <Link
+                            to="https://cipivlad.github.io/myportfoliosite/"
+                            target="_blank"
+                            style={{ color: 'black', textDecoration: 'none' }}
+                        >
+                            Cipi
+                            {/* space */}
+                            <span> </span>
+                            <GitHubIcon
+                                sx={{ fontSize: 20 }}
+                            />
+                        </Link>
+                    </p>
+                </nav>
+            </header>
             <h1>Welcome to the Dog API</h1>
             <article>
                 <p>Click on breed image to show detail pictures or select one or multiple breeds to create a gallery!</p>
@@ -52,7 +84,8 @@ const BreedList = () => {
                     <BreedItem
                         key={index}
                         breed={breed}
-                        getRandomPic={(dogName: string) => setImage(dogName)}
+                        getRandomPic={(dogName: string) => setImage([...dogName])}
+                        onFavoritesChange={handleFavorites}
                     />
                 ))
             }

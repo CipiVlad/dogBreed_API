@@ -5,8 +5,14 @@
 
 ## Tasks
 - [x] integrate the dog api to fetch and display images of selected dog breeds
-- [] implement a user interface with Material UI that allows users to select one or more dog breeds
+- [x] implement a user interface with Material UI that allows users to select one or more dog breeds
 - [] display images of the selected breeds in a gallery format
+
+### Features
+- [] scroll to top
+- [] overview of selected breeds in navbar
+- [] spinner component
+- [] add favicon
 
 ## App Structure
 - route: "/"

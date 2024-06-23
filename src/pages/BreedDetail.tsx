@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom"
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
+
 
 const BreedDetail = () => {
     const { hound } = useParams()
@@ -32,15 +32,21 @@ const BreedDetail = () => {
 
         < div>
             <h2>Details of {hound ? hound.slice(0, 1).toUpperCase() + hound.slice(1) : ''}</h2>
-            <Box sx={{ width: 500, height: 450 }}>
-                <ImageList variant="masonry" cols={3} gap={8}>
+            <Box sx={{ width: '100%', height: 450 }}>
+                <ImageList variant="masonry" cols={2} gap={8}>
                     {images.map((item) => (
-                        <ImageListItem key={item}>
+                        <ImageListItem
+                            key={item}
+
+                        >
                             <img
                                 srcSet={`${item}?w=248&fit=crop&auto=format&dpr=2 2x`}
                                 src={`${item}?w=248&fit=crop&auto=format`}
                                 alt={item}
                                 loading="lazy"
+                                style={{
+                                    borderRadius: '2px',
+                                }}
                             />
                             {/* <ImageListItemBar position="below" title={item} /> */}
                         </ImageListItem>

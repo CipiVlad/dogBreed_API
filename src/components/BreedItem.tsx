@@ -11,22 +11,25 @@ import Favorite from '@mui/icons-material/Favorite';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import IconButton from '@mui/material/IconButton';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+
 
 
 interface BreedProps {
     breed: string;
     getRandomPic: (dogName: string) => void;
+    onFavoritesChange: (breed: string, isChecked: boolean) => void;
 }
 
-const BreedItem = ({ breed, getRandomPic }: BreedProps) => {
+const BreedItem = ({ breed, getRandomPic, onFavoritesChange }: BreedProps) => {
     const [isChecked, setIsChecked] = useState(false);
     const [image, setImage] = useState<string>();
 
     // handle users check
-    const handleCheckBox = () => setIsChecked(prev => !prev)
-
+    const handleCheckBox = () => {
+        const newCheckedState = !isChecked;
+        setIsChecked(newCheckedState);
+        onFavoritesChange(breed, newCheckedState);
+    }
     // get hound images by breed
     getRandomPic = async (dogName: string) => {
         try {
@@ -38,9 +41,11 @@ const BreedItem = ({ breed, getRandomPic }: BreedProps) => {
         }
     }
 
+    // on load
     useEffect(() => {
         getRandomPic(breed)
     }, [])
+
 
     return (
         <div style={{ display: 'grid', justifyContent: 'center' }}>
