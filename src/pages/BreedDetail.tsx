@@ -8,8 +8,9 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
 //loadig skeleton
-import { Box, CircularProgress } from "@mui/material";
+import { Box, Button, CircularProgress } from "@mui/material";
 import GoBack from "../components/GoBack"
+
 
 const BreedDetail = () => {
     const { hound } = useParams()
@@ -21,7 +22,7 @@ const BreedDetail = () => {
     // get hound images by breed
     const getHound = async () => {
         const response = await axios.get(`${BASE_URL}/breed/${hound}/images`)
-        setImages(response.data.message)
+        setImages(response.data.message.slice(0, 8)); //load only 8 images
         setLoading(false)
         // console.log(response.data.message);
     }
@@ -31,7 +32,11 @@ const BreedDetail = () => {
         getHound();
     }, [])
 
-    // console.log(images);
+    const loadMoreImages = async () => {
+        const response = await axios.get(`${BASE_URL}/breed/${hound}/images`);
+        setImages([...images, ...response.data.message]);
+        setLoading(false)
+    }
 
     return (
 
@@ -49,9 +54,30 @@ const BreedDetail = () => {
                                 />
                             </Box>
 
-                            : images.map((image, index) => <ImageListItem key={index}><img src={image} alt={hound} loading="lazy" /></ImageListItem>)
+                            :
+
+                            images.map((image, index) => <ImageListItem key={index}><img src={image} alt={hound} loading="lazy" /></ImageListItem>)
                     }
                 </ImageList>
+
+
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginTop: '20px',
+                        marginBottom: '20px',
+                    }}
+                >
+                    <Button
+                        variant="contained"
+                        onClick={() => loadMoreImages()}
+                    >
+                        Load More
+                    </Button>
+                </Box>
+
             </Box>
         </div>
 
