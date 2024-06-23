@@ -1,15 +1,12 @@
-
-import React from 'react'
 import BreedList from "./components/BreedList"
-import { Router, Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import BreedDetail from "./pages/BreedDetail"
 import SelectedBreedGallery from './pages/SelectedBreedGallery'
-
+import PageNotFound from "./pages/404"
+import LoadingSkeleton from "./components/LoadingSkeleton"
 
 
 function App() {
-
-
   return (
     <>
       <Routes>

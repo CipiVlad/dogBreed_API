@@ -6,6 +6,9 @@ import Button from '@mui/material/Button';
 import { Link, useNavigate } from "react-router-dom";
 //github icon
 import GitHubIcon from '@mui/icons-material/GitHub';
+import LoadingSkeleton from "./LoadingSkeleton";
+
+
 const BreedList = () => {
     const [breedList, setBreedList] = useState([]);
     const getObjEntries = Object.entries(breedList);
@@ -15,17 +18,22 @@ const BreedList = () => {
 
     const navigate = useNavigate();
 
+    //loading skeleton
+    const [loading, setLoading] = useState(false);
+
     //fetch the list of all breeds by name
     const getBreedList = async () => {
         try {
             const response = await axios.get(`${BASE_URL}/breeds/list/all`);
             setBreedList(response.data.message);
+            setLoading(false);
         } catch (error) {
             console.log({ message: `sorry but: ${error}` });
         }
     }
 
     useEffect(() => {
+        setLoading(true);
         getBreedList();
     }, [])
 
@@ -43,6 +51,7 @@ const BreedList = () => {
         // console.log(favorites);
     }, [favorites])
 
+    // loading skeleton
     return (
         <>
             <header>
@@ -83,17 +92,24 @@ const BreedList = () => {
                 Create Gallery
             </Button>
 
-            {/* map the list of all hounds */}
-            {
-                nameList && nameList.map((breed, index) => (
+            {/* loading skeleton */}
+            {loading ?
+                nameList.map((breed, index) => (
+                    <LoadingSkeleton
+                        key={index}
+                        loading={loading}
+                    />
+                ))
+
+                :
+                nameList.map((breed, index) => (
                     <BreedItem
                         key={index}
                         breed={breed}
                         getRandomPic={(dogName: string) => setImage([...dogName])}
                         onFavoritesChange={handleFavorites}
                     />
-                ))
-            }
+                ))}
         </>
     )
 }

@@ -8,21 +8,26 @@ import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
+//loadig skeleton
+import LoadingSkeleton from "../components/LoadingSkeleton"
 
 const BreedDetail = () => {
     const { hound } = useParams()
 
     const [images, setImages] = useState<string[]>([]);
+    const [loading, setLoading] = useState(false);
 
 
     // get hound images by breed
     const getHound = async () => {
         const response = await axios.get(`${BASE_URL}/breed/${hound}/images`)
         setImages(response.data.message)
+        setLoading(false)
         // console.log(response.data.message);
     }
 
     useEffect(() => {
+        setLoading(true)
         getHound();
     }, [])
 
@@ -34,23 +39,9 @@ const BreedDetail = () => {
             <h2>Details of {hound ? hound.slice(0, 1).toUpperCase() + hound.slice(1) : ''}</h2>
             <Box sx={{ width: '100%', height: 450 }}>
                 <ImageList variant="masonry" cols={2} gap={8}>
-                    {images.map((item) => (
-                        <ImageListItem
-                            key={item}
-
-                        >
-                            <img
-                                srcSet={`${item}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                                src={`${item}?w=248&fit=crop&auto=format`}
-                                alt={item}
-                                loading="lazy"
-                                style={{
-                                    borderRadius: '2px',
-                                }}
-                            />
-                            {/* <ImageListItemBar position="below" title={item} /> */}
-                        </ImageListItem>
-                    ))}
+                    {
+                        loading ? <LoadingSkeleton loading={loading} /> : images.map((image, index) => <ImageListItem key={index}><img src={image} alt={hound} loading="lazy" /></ImageListItem>)
+                    }
                 </ImageList>
             </Box>
         </div>
