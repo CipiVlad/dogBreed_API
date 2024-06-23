@@ -85,7 +85,6 @@ const BreedList = () => {
                     color="success"
                     sx={{
                         display: 'inline-block',
-                        // color: '#5e60ce',
                         textDecoration: 'none',
                         '&:hover': {
                             backgroundColor: 'transparent',
@@ -98,7 +97,7 @@ const BreedList = () => {
                         to="https://dog.ceo/dog-api/about"
                         style={{
                             display: 'inline-block',
-                            color: '#5e60ce',
+                            color: '#333',
                             textDecoration: 'none'
                         }}
                         target="_blank"
