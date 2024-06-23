@@ -11,8 +11,9 @@
 ### Features
 - [] scroll to top
 - [] overview of selected breeds in navbar
-- [] spinner component
+- [x] spinner component
 - [x] add favicon
+- [] navigate back button
 
 ## App Structure
 - route: "/"

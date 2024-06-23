@@ -12,6 +12,7 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 
+import { Box, CircularProgress } from "@mui/material";
 
 
 interface BreedProps {
@@ -23,7 +24,7 @@ interface BreedProps {
 const BreedItem = ({ breed, getRandomPic, onFavoritesChange }: BreedProps) => {
     const [isChecked, setIsChecked] = useState(false);
     const [image, setImage] = useState<string>();
-
+    const [loading, setLoading] = useState(false);
     // handle users check
     const handleCheckBox = () => {
         const newCheckedState = !isChecked;
@@ -36,6 +37,7 @@ const BreedItem = ({ breed, getRandomPic, onFavoritesChange }: BreedProps) => {
             const response = await axios.get(`${BASE_URL}/breed/${dogName}/images/random`)
             // console.log(response.data.message);
             setImage(response.data.message)
+            setLoading(false)
         } catch (error) {
 
         }
@@ -43,10 +45,17 @@ const BreedItem = ({ breed, getRandomPic, onFavoritesChange }: BreedProps) => {
 
     // on load
     useEffect(() => {
+        setLoading(true)
         getRandomPic(breed)
     }, [])
 
-
+    if (loading) {
+        return (
+            <div style={{ display: 'grid', justifyContent: 'center' }}>
+                <CircularProgress />
+            </div>
+        )
+    }
     return (
         <div style={{ display: 'grid', justifyContent: 'center' }}>
             <ImageList

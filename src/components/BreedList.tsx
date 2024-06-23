@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import { Link, useNavigate } from "react-router-dom";
 //github icon
 import GitHubIcon from '@mui/icons-material/GitHub';
-import LoadingSkeleton from "./LoadingSkeleton";
 
+import { Box, CircularProgress } from "@mui/material";
 
 const BreedList = () => {
     const [breedList, setBreedList] = useState([]);
@@ -94,12 +94,13 @@ const BreedList = () => {
 
             {/* loading skeleton */}
             {loading ?
-                nameList.map((breed, index) => (
-                    <LoadingSkeleton
-                        key={index}
-                        loading={loading}
+
+                <Box>
+                    <CircularProgress
+                        color="warning"
+                        size={100}
                     />
-                ))
+                </Box>
 
                 :
                 nameList.map((breed, index) => (
