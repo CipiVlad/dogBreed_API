@@ -42,7 +42,28 @@ const BreedDetail = () => {
 
         < div>
             <GoBack />
-            <h2>Details of {hound ? hound.slice(0, 1).toUpperCase() + hound.slice(1) : ''}</h2>
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginTop: '20px',
+                    marginBottom: '20px',
+                }}
+            >
+                <Button
+                    variant="contained"
+                    onClick={() => loadMoreImages()}
+                >
+                    Load More
+                </Button>
+            </Box>
+            <h2>Details of
+                <span style={{ color: '#333' }}>
+                    <span> </span>
+                    {hound ? hound.slice(0, 1).toUpperCase() + hound.slice(1) : ''}
+                </span>
+            </h2>
             <Box sx={{ width: '100%', height: 450 }}>
                 <ImageList variant="masonry" cols={2} gap={8}>
                     {
@@ -59,25 +80,6 @@ const BreedDetail = () => {
                             images.map((image, index) => <ImageListItem key={index}><img src={image} alt={hound} loading="lazy" /></ImageListItem>)
                     }
                 </ImageList>
-
-
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        marginTop: '20px',
-                        marginBottom: '20px',
-                    }}
-                >
-                    <Button
-                        variant="contained"
-                        onClick={() => loadMoreImages()}
-                    >
-                        Load More
-                    </Button>
-                </Box>
-
             </Box>
         </div>
 
