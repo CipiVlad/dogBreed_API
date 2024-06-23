@@ -47,6 +47,7 @@ const BreedList = () => {
         <>
             <header>
                 <nav>
+                    <img src="/dog.png" alt="dog-favicon" width={50} height={50} />
                     <p> Made with
                         <span style={{ color: 'red' }}>
                             &#10084;
