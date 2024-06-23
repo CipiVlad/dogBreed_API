@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BASE_URL } from "../api/BaseURL";
 import BreedItem from "./BreedItem";
 import Button from '@mui/material/Button';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 //github icon
 import GitHubIcon from '@mui/icons-material/GitHub';
 const BreedList = () => {
@@ -12,6 +12,8 @@ const BreedList = () => {
     const nameList = getObjEntries.map(e => e[0]);
     const [image, setImage] = useState<string[]>([]);
     const [favorites, setFavorites] = useState<string[]>([]);
+
+    const navigate = useNavigate();
 
     //fetch the list of all breeds by name
     const getBreedList = async () => {
@@ -28,6 +30,8 @@ const BreedList = () => {
     }, [])
 
     const handleCreateGallery = () => {
+        navigate('/gallery', { state: favorites });
+
         console.log("Favorites: ", favorites);
     }
 
@@ -36,7 +40,7 @@ const BreedList = () => {
     }
 
     useEffect(() => {
-        console.log(favorites);
+        // console.log(favorites);
     }, [favorites])
 
     return (
