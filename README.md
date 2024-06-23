@@ -9,13 +9,14 @@
 - [x] display images of the selected breeds in a gallery format
 
 ### Features
-- [] scroll to top button/icon
+- [x] scroll to top button/icon
 - [] overview of selected breeds in navbar
 - [x] spinner component
 - [x] add favicon
 - [x] navigate back button
 - [x] "create gallery" button only enabled if favorites are chosen 
 - [] add 404 page
+- [x] set link to DOG API
 
 ## App Structure
 - route: "/"

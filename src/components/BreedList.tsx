@@ -78,7 +78,35 @@ const BreedList = () => {
                     </p>
                 </nav>
             </header>
-            <h1>Welcome to the Dog API</h1>
+            <h1>Welcome to the
+                <span> </span>
+                <Button
+                    variant="outlined"
+                    color="success"
+                    sx={{
+                        display: 'inline-block',
+                        // color: '#5e60ce',
+                        textDecoration: 'none',
+                        '&:hover': {
+                            backgroundColor: 'transparent',
+                        },
+                        fontSize: 20
+                    }}
+                >
+
+                    <Link
+                        to="https://dog.ceo/dog-api/about"
+                        style={{
+                            display: 'inline-block',
+                            color: '#5e60ce',
+                            textDecoration: 'none'
+                        }}
+                        target="_blank"
+                    >
+                        Dog API
+                    </Link>
+                </Button>
+            </h1>
             <article>
                 <p>Click on breed image to show detail pictures or select one or multiple breeds to create a gallery!</p>
             </article>
