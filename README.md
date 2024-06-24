@@ -20,7 +20,7 @@
 - [live website](https://main--dog-gallery-api.netlify.app/)
 
 ## Screenshot
-![](./screenshot.jpg)
+![](./public/app_screenshot.png)
 
 ## Tasks
 - [x] integrate the dog api to fetch and display images of selected dog breeds
