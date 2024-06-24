@@ -12,13 +12,8 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 const SelectedBreedGallery = () => {
     const { state } = useLocation();
-
-    const paramString = state.join(", ");
-
     const [images, setImages] = useState<string[]>([]);
-
     const [loading, setLoading] = useState(false);
-
 
     const getHound = async () => {
         const promises = state.map((hound: string) => axios.get(`${BASE_URL}/breed/${hound}/images/random`));
@@ -92,7 +87,6 @@ const SelectedBreedGallery = () => {
                                         //trim the breed name
                                         const breedName = item.split('/')[4].split('_')[0];
                                         window.open(`https://www.google.com/search?q=dog+breed+${breedName}&tbm=isch`);
-
                                     }}
                                 />
                                 <p

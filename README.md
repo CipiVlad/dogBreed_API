@@ -1,7 +1,26 @@
 # Dog Breed App
 
+## Table of contents
+
+- [Overview](#overview)
+  - [Idea](#idea)
+  - [Live Site](#live-site)
+  - [Screenshots](#screenshot)
+- [Tasks](#tasks)
+  - [Features](#features)
+  - [App Structure](#app-structure)
+- [Tools](#tools)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
+
 ## Idea
 - create a small app using React.js, Typescript and Material UI. The app will allow users to view an image gallery of their favorite dog breeds using the [DOG API](https://dog.ceo/dog-api/). 
+
+## Live Site
+- [live website](https://main--dog-gallery-api.netlify.app/)
+
+## Screenshot
+![](./screenshot.jpg)
 
 ## Tasks
 - [x] integrate the dog api to fetch and display images of selected dog breeds
@@ -11,7 +30,6 @@
 
 ### Features
 - [x] scroll to top button/icon
-- [] overview of selected breeds in navbar
 - [x] spinner component
 - [x] add favicon
 - [x] navigate back button
@@ -19,12 +37,12 @@
 - [] add 404 page
 - [x] set link to DOG API
 - [x] share gallery with instagram tag #dog
-- [x] in gallery click on image to search in google lens for more images
+- [x] in gallery click on image to search google for more images
 
 ## App Structure
 - route: "/"
     - get a card list with: 
-        a) one bg-img of random breed
+        a) random breed list
         b) app-bar including: heart-icon and breed name
         c) click on heart for selecting favorite breed(s)
         d) click on bg-img to move on to BreedDetail with Gallery pics of breed
@@ -32,12 +50,16 @@
 
 - route: "/breed/:hound"
     - i.e. /breed/affenpinscher
-    shows BreedDetail in Gallery
+    shows BreedDetail of "Affenpinscher" in Gallery
 
 - route: "/gallery"
     - show a gallery of chosen breeds
 
 ## Tools
+- Mobile First Approach
+- ReactJs / Typescript
+- Material UI
+- vite
 
-## Website Deployment
-- [live website](https://main--dog-gallery-api.netlify.app/)
+## Acknowledgments
+- [DOG API](https://dog.ceo/dog-api/about)
