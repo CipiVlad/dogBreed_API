@@ -81,44 +81,41 @@ const SelectedBreedGallery = () => {
                 Download Images
             </Button> */}
 
-            <div style={{ display: 'grid', justifyContent: 'center', }}>
-                {
-                    loading ?
-                        <Box sx={{ display: 'flex' }}>
-                            <CircularProgress
-                                color="warning"
-                                size={100}
-                            />
-                        </Box> :
-                        <ImageList
-                            sx={{ width: '100%', height: 450 }}
-                            variant="masonry"
-                            cols={2}
-                            gap={8}
-                        >
-                            {images.map((item) => (
-                                <ImageListItem
-                                    key={item}
+            {/* <div style={{ display: 'grid', justifyContent: 'center', }}> */}
+            {
+                loading ?
+                    <Box sx={{ display: 'flex' }}>
+                        <CircularProgress
+                            color="warning"
+                            size={100}
+                        />
+                    </Box> :
+                    <ImageList
+                        sx={{ width: '100%', height: 450 }}
+                        variant="masonry"
+                        cols={2}
+                        gap={8}
+                    >
+                        {images.map((item) => (
+                            <ImageListItem
+                                key={item}
 
-                                >
-                                    <img
-                                        src={`${item}?w=248&fit=crop&auto=format`}
-                                        srcSet={`${item}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                                        alt={item}
-                                        loading="lazy"
-                                        onClick={() => {
-                                            window.open(`https://www.google.com/search?q=${item}&tbm=isch`);
-                                        }}
-                                        style={{
-                                            margin: '10px',
-                                        }}
+                            >
+                                <img
+                                    src={`${item}?w=248&fit=crop&auto=format`}
+                                    srcSet={`${item}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                                    alt={item}
+                                    loading="lazy"
+                                    onClick={() => {
+                                        window.open(`https://www.google.com/search?q=${item}&tbm=isch`);
+                                    }}
 
-                                    />
-                                </ImageListItem>
-                            ))}
-                        </ImageList>
-                }
-            </div>
+                                />
+                            </ImageListItem>
+                        ))}
+                    </ImageList>
+            }
+            {/* </div> */}
 
         </div>
     )
