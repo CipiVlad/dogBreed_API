@@ -38,9 +38,14 @@ const SelectedBreedGallery = () => {
         <div>
             <GoBack />
             <h1>Selected Breed Gallery: </h1>
-            <h2
-                style={{ color: 'black' }}
-            >{paramString}</h2>
+
+            <h4
+                style={{
+                    margin: '10px',
+                    color: '#4a4a4a',
+                }}
+            >Click on the image to google for the dog images or </h4>
+
             <Button
                 variant="contained"
                 startIcon={<InstagramIcon
@@ -55,33 +60,7 @@ const SelectedBreedGallery = () => {
             >
                 Share on Instagram
             </Button>
-            {/* download images to local folder */}
-            {/* <Button
-                variant="contained"
-                startIcon={<DownloadIcon />}
-                onClick={() => {
 
-                    const promises = state.map((hound: string) => axios.get(`${BASE_URL}/breed/${hound}/images/random`));
-                    const responses = Promise.all(promises);
-                    responses.then((response) => {
-                        response.map((response) => {
-                            const link = document.createElement('a');
-                            link.href = response.data.message;
-                            link.download = 'dogBreed';
-                            link.click();
-                        })
-                    })
-
-
-                }}
-                style={{
-                    margin: '10px',
-                }}
-            >
-                Download Images
-            </Button> */}
-
-            {/* <div style={{ display: 'grid', justifyContent: 'center', }}> */}
             {
                 loading ?
                     <Box sx={{ display: 'flex' }}>
@@ -91,7 +70,7 @@ const SelectedBreedGallery = () => {
                         />
                     </Box> :
                     <ImageList
-                        sx={{ width: '100%', height: 450 }}
+                        sx={{ width: '100%', height: '100%', border: '1px solid #ccc', borderRadius: '10px', boxShadow: '0 0 30px #ccc' }}
                         variant="masonry"
                         cols={2}
                         gap={8}
@@ -99,6 +78,9 @@ const SelectedBreedGallery = () => {
                         {images.map((item) => (
                             <ImageListItem
                                 key={item}
+                                style={{
+                                    cursor: 'pointer',
+                                }}
 
                             >
                                 <img
@@ -107,16 +89,25 @@ const SelectedBreedGallery = () => {
                                     alt={item}
                                     loading="lazy"
                                     onClick={() => {
-                                        window.open(`https://www.google.com/search?q=${item}&tbm=isch`);
-                                    }}
+                                        //trim the breed name
+                                        const breedName = item.split('/')[4].split('_')[0];
+                                        window.open(`https://www.google.com/search?q=dog+breed+${breedName}&tbm=isch`);
 
+                                    }}
                                 />
+                                <p
+                                    style={{
+                                        fontSize: '10px',
+                                        color: '#4a4a4a',
+                                        backgroundColor: 'lightgreen',
+                                        padding: '5px',
+                                        borderRadius: '0 0 5px 5px ',
+                                    }}
+                                >{item.split('/')[4].split('_')[0]}</p>
                             </ImageListItem>
                         ))}
                     </ImageList>
             }
-            {/* </div> */}
-
         </div>
     )
 }

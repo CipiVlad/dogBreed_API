@@ -7,6 +7,7 @@
 - [x] integrate the dog api to fetch and display images of selected dog breeds
 - [x] implement a user interface with Material UI that allows users to select one or more dog breeds
 - [x] display images of the selected breeds in a gallery format
+- [] [test app with Jest and React Testing Library ](https://www.freecodecamp.org/news/how-to-test-react-applications/)
 
 ### Features
 - [x] scroll to top button/icon
