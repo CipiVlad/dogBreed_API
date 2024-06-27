@@ -8,7 +8,6 @@ import { Link, useNavigate } from "react-router-dom";
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 import { Box, CircularProgress } from "@mui/material";
-import SearchBar from "./SearchBar";
 
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -152,7 +151,7 @@ const BreedList = () => {
                         onKeyDown={(e) => e.key === 'Enter' && handleSearch(searchTerm)}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         value={searchTerm}
-                        placeholder="Search"
+                        placeholder="Search Breed"
                         style={{
                             padding: '10px',
                             borderRadius: '5px',
