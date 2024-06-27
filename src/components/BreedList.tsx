@@ -10,7 +10,8 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import { Box, CircularProgress } from "@mui/material";
 
 import SearchIcon from '@mui/icons-material/Search';
-
+//clear icon
+import ClearIcon from '@mui/icons-material/Clear';
 const BreedList = () => {
     const [breedList, setBreedList] = useState([]);
     const getObjEntries = Object.entries(breedList);
@@ -53,7 +54,7 @@ const BreedList = () => {
 
     const handleSearch = async (value: string) => {
         try {
-            const response = await axios.get(`${BASE_URL}/breed/${value}/images`);
+            const response = await axios.get(`${BASE_URL}/breed/${value.toLowerCase()}/images`);
             //first 10 images
             setSearchResults(response.data.message.slice(0, 10));
             console.log(response.data.message);
@@ -63,6 +64,11 @@ const BreedList = () => {
         } catch (error) {
             console.log({ message: `sorry but: ${error}` });
         }
+    }
+
+    const handleClearInput = () => {
+        setSearchTerm('');
+        setSearchResults([]);
     }
 
     // loading skeleton
@@ -145,20 +151,36 @@ const BreedList = () => {
                     Create Gallery
                 </Button>
 
-                <div style={{ width: '100%' }}>
+                <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                     <input
                         type="text"
                         onKeyDown={(e) => e.key === 'Enter' && handleSearch(searchTerm)}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         value={searchTerm}
-                        placeholder="Search Breed"
                         style={{
                             padding: '10px',
                             borderRadius: '5px',
                             border: '1px solid #ccc',
                             width: '100%',
+                            //don't zoom in on mobile
+                            WebkitTextSizeAdjust: 'none',
                         }}
+
                     />
+
+                    {
+                        searchTerm &&
+                        <ClearIcon
+                            sx={{
+                                fontSize: 20,
+                                cursor: 'pointer',
+                            }}
+                            color="warning"
+                            onClick={handleClearInput}
+                        />
+
+
+                    }
                 </div>
 
 
