@@ -157,6 +157,7 @@ const BreedList = () => {
                         onKeyDown={(e) => e.key === 'Enter' && handleSearch(searchTerm)}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         value={searchTerm}
+                        placeholder="Search..."
                         style={{
                             padding: '10px',
                             borderRadius: '5px',
