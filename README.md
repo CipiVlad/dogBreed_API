@@ -34,10 +34,12 @@
 - [x] add favicon
 - [x] navigate back button
 - [x] "create gallery" button only enabled if favorites are chosen 
-- [] add 404 page
+- []  add 404 page
 - [x] set link to DOG API
 - [x] share gallery with instagram tag #dog
 - [x] in gallery click on image to search google for more images
+- []  tool-tip when hovering over selected gallery to show url
+- []  search bar for breeds on "/"
 
 ## App Structure
 - route: "/"

@@ -39,7 +39,7 @@ const BreedItem = ({ breed, getRandomPic, onFavoritesChange }: BreedProps) => {
             setImage(response.data.message)
             setLoading(false)
         } catch (error) {
-
+            console.log({ message: `sorry but: ${error}` });
         }
     }
 
@@ -47,6 +47,7 @@ const BreedItem = ({ breed, getRandomPic, onFavoritesChange }: BreedProps) => {
     useEffect(() => {
         setLoading(true)
         getRandomPic(breed)
+        setLoading(false)
     }, [])
 
     if (loading) {
